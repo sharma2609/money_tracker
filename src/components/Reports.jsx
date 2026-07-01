@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useCallback } from "react";
+import PropTypes from "prop-types";
 
 /**
  * Reports component - CSV export functionality
@@ -100,7 +101,7 @@ const Reports = React.memo(function Reports({ transactions }) {
     ).toFixed(2)}`;
 
     return csvContent + summary;
-  }, [filteredTransactions, months, reportType, selectedMonth, selectedYear]);
+  }, [filteredTransactions]);
 
   // Memoize download handler
   const handleDownloadCSV = useCallback(() => {
@@ -266,5 +267,9 @@ const Reports = React.memo(function Reports({ transactions }) {
     </div>
   );
 });
+
+Reports.propTypes = {
+  transactions: PropTypes.array.isRequired,
+};
 
 export default Reports;

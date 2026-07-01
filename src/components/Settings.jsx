@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from "react";
+import PropTypes from "prop-types";
 import { useTheme } from "../contexts/ThemeContext";
 
 /**
@@ -136,5 +137,11 @@ const Settings = React.memo(function Settings({
     </div>
   );
 });
+
+Settings.propTypes = {
+  categories: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onUpdateCategories: PropTypes.func.isRequired,
+  onClearHistory: PropTypes.func.isRequired,
+};
 
 export default Settings;

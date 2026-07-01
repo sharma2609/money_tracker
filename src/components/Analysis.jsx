@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useCallback } from "react";
+import PropTypes from "prop-types";
 
 /**
  * Analysis component - Financial analysis with category breakdown
@@ -210,5 +211,9 @@ const Analysis = React.memo(function Analysis({ transactions }) {
     </div>
   );
 });
+
+Analysis.propTypes = {
+  transactions: PropTypes.array.isRequired,
+};
 
 export default Analysis;

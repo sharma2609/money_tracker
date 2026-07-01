@@ -1,4 +1,5 @@
 import React, { useMemo, useCallback } from "react";
+import PropTypes from "prop-types";
 
 /**
  * TransactionList - Displays all transactions in a clean list format
@@ -85,5 +86,10 @@ const TransactionList = React.memo(function TransactionList({
     </div>
   );
 });
+
+TransactionList.propTypes = {
+  transactions: PropTypes.array.isRequired,
+  onDeleteTransaction: PropTypes.func.isRequired,
+};
 
 export default TransactionList;

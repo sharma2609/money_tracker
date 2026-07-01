@@ -1,4 +1,5 @@
 import React, { useCallback } from "react";
+import PropTypes from "prop-types";
 
 /**
  * Floating vertical navigation bar
@@ -40,5 +41,10 @@ const FloatingNav = React.memo(function FloatingNav({
     </nav>
   );
 });
+
+FloatingNav.propTypes = {
+  currentView: PropTypes.string.isRequired,
+  onNavigate: PropTypes.func.isRequired,
+};
 
 export default FloatingNav;

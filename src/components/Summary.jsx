@@ -1,4 +1,5 @@
 import React, { useMemo } from "react";
+import PropTypes from "prop-types";
 
 /**
  * Summary component - displays total income, expense, and balance
@@ -41,5 +42,9 @@ const Summary = React.memo(function Summary({ transactions }) {
     </div>
   );
 });
+
+Summary.propTypes = {
+  transactions: PropTypes.array.isRequired,
+};
 
 export default Summary;

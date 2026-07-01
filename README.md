@@ -1,200 +1,109 @@
-# 🖤 Money Tracker
+# Money Tracker
 
-A minimalist personal finance tracker built with React, featuring a **NothingOS-inspired monochromatic design**. Track your income and expenses with a clean, distraction-free interface that focuses on what matters most - your financial data.
+A client-side personal finance tracker with a monochromatic NothingOS-inspired UI. Add income and expense transactions, view spending breakdowns by category, and export reports — all stored locally in your browser.
 
-## ✨ Features
+## Overview
 
-### 💰 **Financial Management**
+Most finance apps require an account, send your data to a server, or bury simple features behind paywalls. Money Tracker is a single HTML file's worth of JavaScript that runs entirely in your browser. There is no backend, no registration, no telemetry. Your financial data never leaves your device. The interface follows a monochromatic design philosophy inspired by Nothing OS — black, white, and gray only, with typographic hierarchy and spacing doing the work that colour usually carries.
 
-- **Transaction Tracking** - Add income and expense transactions with detailed information
-- **Real-time Calculations** - Automatic income, expense, and balance calculations
-- **Category Organization** - Organize transactions with customizable categories
-- **Monthly Overview** - Current month summary with key financial metrics
-- **Transaction History** - Complete list of all transactions with sorting and filtering
+## Features
 
-### 📊 **Analytics & Insights**
+- **Transaction management** — Add income or expense transactions with a title, amount, category, and date. Delete individual entries.
+- **Monthly overview** — See total income, total expense, and net balance for the current month, alongside a sortable transaction list.
+- **Financial analysis** — Switch between monthly and annual views. Filter by any period. See a category breakdown of expenses with proportional progress bars.
+- **CSV reporting** — Select a month or year, preview the summary statistics, then download a CSV file compatible with Excel and Google Sheets.
+- **Category management** — Add and remove custom categories from the Settings panel.
+- **Dark / light theme** — Toggle between themes. Preference is persisted in localStorage.
+- **Zero external dependencies for runtime** — Aside from React and ReactDOM, no runtime libraries are used. No state management library, no CSS framework, no icon library.
 
-- **Financial Analysis** - Monthly and annual financial breakdowns
-- **Category Breakdown** - Visual representation of spending by category
-- **Statistical Overview** - Transaction counts, totals, and trends
-- **Period Filtering** - View data by specific months or years
-- **Progress Visualization** - Animated progress bars for category spending
+## Tech Stack
 
-### 📈 **Reporting**
+| Layer | Technology |
+|-------|-----------|
+| Framework | React 18 |
+| Build tool | Vite 5 |
+| Styling | CSS3 (custom properties, Grid, Flexbox) |
+| Persistence | Browser localStorage |
+| Linting | ESLint 8 + plugins (react, react-hooks, react-refresh) |
+| Prop validation | PropTypes |
 
-- **CSV Export** - Download financial reports in spreadsheet format
-- **Report Preview** - Preview report data before downloading
-- **Period Selection** - Generate reports for specific time periods
-- **Summary Statistics** - Comprehensive financial summaries included
+## Installation
 
-### ⚙️ **Customization**
+**Prerequisites:** Node.js 16+ and npm (or your package manager of choice).
 
-- **Theme Switching** - Seamless dark/light mode toggle
-- **Category Management** - Add, edit, and delete custom categories
-- **Data Management** - Clear transaction history when needed
-- **Persistent Storage** - All data saved locally in browser
+```bash
+git clone <repo-url>
+cd money-tracker
+npm install
+npm run dev
+```
 
-## 🎨 Design Philosophy
-
-### **NothingOS Aesthetic**
-
-- **Pure Monochromatic** - Black, white, and gray color palette only
-- **Minimalist Interface** - Clean lines, purposeful spacing, no visual clutter
-- **Typography-focused** - Clear hierarchy using font weights and sizes
-- **Geometric Design** - Consistent border radius and spacing grid
-
-### **Smooth Interactions**
-
-- **60fps Animations** - Hardware-accelerated transitions throughout
-- **Micro-interactions** - Subtle hover effects and state changes
-- **Staggered Animations** - Elegant entry animations for content
-- **Responsive Feedback** - Immediate visual response to user actions
-
-## 🚀 Performance
-
-### **Optimized React Architecture**
-
-- **React.memo** - Prevents unnecessary component re-renders
-- **useCallback** - Memoized event handlers for stable references
-- **useMemo** - Cached expensive calculations and data transformations
-- **Efficient State Management** - Optimized state updates and data flow
-
-### **Modern CSS**
-
-- **CSS Variables** - Efficient theme switching and consistent design tokens
-- **Hardware Acceleration** - Transform-based animations for smooth performance
-- **Responsive Design** - Mobile-first approach with breakpoint optimization
-- **Minimal Bundle** - Clean, optimized CSS with no unused styles
-
-## 📱 Responsive Design
-
-### **Desktop (1024px+)**
-
-- Two-column layout with sticky transaction form
-- Floating navigation sidebar
-- Optimal spacing and typography for large screens
-
-### **Tablet (640px - 1024px)**
-
-- Single column layout for better content flow
-- Bottom navigation bar for easy thumb access
-- Adjusted grid layouts for medium screens
-
-### **Mobile (< 640px)**
-
-- Compact, touch-friendly interface
-- Optimized form layouts for small screens
-- Gesture-friendly navigation and interactions
-
-## 🛠️ Technology Stack
-
-- **React 18** - Modern React with hooks and concurrent features
-- **Vite** - Fast build tool and development server
-- **CSS3** - Modern CSS with variables, grid, and flexbox
-- **Local Storage** - Browser-based data persistence
-- **ESLint** - Code quality and consistency
-
-## 🏃‍♂️ Getting Started
-
-### Prerequisites
-
-- Node.js (v16 or higher)
-- npm or yarn package manager
-
-### Installation
-
-1. **Clone the repository**
-
-   ```bash
-   git clone <repository-url>
-   cd money-tracker
-   ```
-
-2. **Install dependencies**
-
-   ```bash
-   npm install
-   ```
-
-3. **Start development server**
-
-   ```bash
-   npm run dev
-   ```
-
-4. **Open in browser**
-   ```
-   http://localhost:5173
-   ```
-
-### Build for Production
+The development server starts at `http://localhost:5173`. For a production build:
 
 ```bash
 npm run build
+npm run preview
 ```
 
-The built files will be in the `dist` directory, ready for deployment.
+The built output is written to `dist/` and can be deployed to any static host (Vercel, Netlify, GitHub Pages, etc.).
 
-## 📖 Usage Guide
+## Usage
 
-### **Adding Transactions**
+### Adding a transaction
 
-1. Fill in the transaction form on the left panel
-2. Select transaction type (Income/Expense)
-3. Choose a category (optional)
-4. Set the date and amount
-5. Click "Add Transaction"
+Fill out the form on the left panel: enter a title, set the amount, choose **Expense** or **Income**, optionally pick a category, and select a date. Click **Add Transaction** — it appears immediately in the right panel's transaction list and updates the summary cards.
 
-### **Viewing Analytics**
+### Viewing analysis
 
-1. Click the Analysis icon in the floating navigation
-2. Switch between Monthly and Annual views
-3. Select specific time periods using the dropdowns
-4. View category breakdowns and spending patterns
+Click the half-circle icon in the floating nav to open **Analysis**. Choose **Monthly** or **Annual**, then pick a specific month and year. The four stat cards show total income, expense, net balance, and transaction count for that period. Expense categories are listed below with a visual breakdown bar.
 
-### **Generating Reports**
+### Exporting a report
 
-1. Navigate to the Reports section
-2. Choose report type (Monthly/Annual)
-3. Select the desired time period
-4. Preview the report statistics
-5. Download as CSV for external analysis
+Click the download icon in the floating nav to open **Reports**. Select the report type (Monthly/Annual) and the period, then click **Download as CSV**. The file includes both the individual transactions and a summary section with totals.
 
-### **Managing Categories**
+### Managing categories
 
-1. Go to Settings via the floating navigation
-2. Add new categories using the input form
-3. Delete unwanted categories with the × button
-4. Categories are automatically saved
+Click the gear icon to open **Settings**. Add new categories via the text input, or remove existing ones with the × button. Categories appear in the transaction form's dropdown and in the analysis breakdown.
 
-### **Theme Switching**
+### Changing theme
 
-1. Access Settings from the navigation
-2. Toggle the theme switch for dark/light mode
-3. Theme preference is automatically saved
+In **Settings**, toggle the theme switch between dark and light. The change applies immediately and persists across sessions.
 
-## 🎯 Key Benefits
+## Configuration
 
-- **Privacy-focused** - All data stays on your device
-- **No registration** - Start tracking immediately
-- **Offline capable** - Works without internet connection
-- **Fast & responsive** - Optimized for smooth performance
-- **Clean interface** - Focus on your finances, not the UI
-- **Export ready** - Easy data export for external analysis
+No environment variables, config files, or flags are required. The entire application is configured through the UI. Data is stored under the `transactions`, `categories`, and `theme` keys in `window.localStorage`.
 
-## 🔒 Data Privacy
+## Project Structure
 
-Your financial data is completely private and secure:
+```
+money-tracker/
+├── index.html              # HTML shell — loads the app
+├── vite.config.js          # Vite configuration (React plugin)
+├── .eslintrc.cjs           # ESLint config
+├── public/
+│   └── vite.svg            # Favicon
+└── src/
+    ├── main.jsx            # React entry point, mounts <App> inside <ThemeProvider>
+    ├── App.jsx             # Root component — owns all state, two-column layout
+    ├── App.css             # All styles (1400+ lines), dark/light themes via CSS vars
+    ├── hooks/
+    │   └── useLocalStorage.js   # Syncs React state with localStorage
+    ├── contexts/
+    │   └── ThemeContext.jsx     # Dark/light theme context + provider
+    └── components/
+        ├── FloatingNav.jsx     # Fixed side nav: Overview / Analysis / Reports / Settings
+        ├── TransactionForm.jsx # Left panel: transaction input form
+        ├── TransactionList.jsx # Right panel: sortable transaction list with delete
+        ├── Summary.jsx         # Income / Expense / Balance summary cards
+        ├── Analysis.jsx        # Monthly/annual breakdown with category bars
+        ├── Reports.jsx         # CSV export with period config and preview
+        └── Settings.jsx        # Theme toggle, category CRUD, clear all data
+```
 
-- **Local storage only** - No data sent to external servers
-- **No tracking** - No analytics or user behavior monitoring
-- **No registration** - No personal information required
-- **Full control** - You own and control all your data
+## Testing
 
-## 🎨 Design Credits
+No test suite is currently configured. The project uses no test framework.
 
-Inspired by the **Nothing OS** design philosophy - clean, minimal, and purposeful interfaces that prioritize functionality over decoration.
+## License
 
----
-
-**Start tracking your finances with style. Simple, clean, effective.** 🖤
+This project does not specify a license.

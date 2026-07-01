@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from "react";
+import PropTypes from "prop-types";
 
 /**
  * TransactionForm - Left column input form
@@ -153,5 +154,10 @@ const TransactionForm = React.memo(function TransactionForm({
     </div>
   );
 });
+
+TransactionForm.propTypes = {
+  onAddTransaction: PropTypes.func.isRequired,
+  categories: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
 
 export default TransactionForm;
